@@ -218,8 +218,13 @@ document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
 
 // Add loading states for images
 document.querySelectorAll("img").forEach((img) => {
+  // Check if image is already cached/loaded
+  if (img.complete && img.naturalHeight !== 0) {
+    img.classList.add("loaded");
+  }
+
   img.addEventListener("load", function () {
-    this.style.opacity = "1";
+    this.classList.add("loaded");
   });
 
   img.addEventListener("error", function () {
