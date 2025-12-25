@@ -4,211 +4,287 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aye Hnin Wai - Architect Portfolio</title>
-    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1a1a2e",
+              secondary: "#4a4a68",
+              accent: "#c9a227",
+              cream: "#f5f3ef",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              body: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="font-body bg-cream text-primary">
     <!-- Navigation -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <div class="nav-logo">
-          <h2>AYE HNIN WAI</h2>
+    <nav
+      id="navbar"
+      class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50 transition-all duration-500"
+    >
+      <div class="glass-nav rounded-2xl px-6 py-3">
+        <div class="flex justify-between items-center">
+          <a
+            href="#home"
+            class="font-display text-lg md:text-xl font-semibold tracking-wide text-white drop-shadow-sm"
+          >
+            AYE HNIN WAI
+          </a>
+          <div class="hidden md:flex space-x-6">
+            <a href="#home" class="nav-link-glass">Home</a>
+            <a href="#about" class="nav-link-glass">About</a>
+            <a href="#projects" class="nav-link-glass">Projects</a>
+            <a href="#contact" class="nav-link-glass">Contact</a>
+          </div>
+          <button id="menu-btn" class="md:hidden p-2 text-white">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
         </div>
-        <ul class="nav-menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden glass-nav mt-2 rounded-xl overflow-hidden"
+      >
+        <div class="px-4 py-4 space-y-2">
+          <a
+            href="#home"
+            class="block py-2 text-white/90 hover:text-accent transition"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="block py-2 text-white/90 hover:text-accent transition"
+            >About</a
+          >
+          <a
+            href="#projects"
+            class="block py-2 text-white/90 hover:text-accent transition"
+            >Projects</a
+          >
+          <a
+            href="#contact"
+            class="block py-2 text-white/90 hover:text-accent transition"
+            >Contact</a
+          >
         </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="title-line">Aye Hnin Wai</span>
-            <span class="title-line">Architect</span>
-          </h1>
-          <p class="hero-subtitle">
-            Creating innovative architectural designs that blend functionality
-            with aesthetic excellence
-          </p>
-          <a href="#projects" class="cta-button">View Projects</a>
-        </div>
+    <section
+      id="home"
+      class="min-h-screen flex items-center justify-center relative overflow-hidden"
+    >
+      <!-- Background Image -->
+      <div class="absolute inset-0">
+        <img
+          src="portfolios/Myeik Resident/Render Photo/1.jpg"
+          alt="Architecture Background"
+          class="w-full h-full object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80"
+        ></div>
       </div>
-      <div class="hero-visual">
-        <div class="floating-elements">
-          <div class="element element-1"></div>
-          <div class="element element-2"></div>
-          <div class="element element-3"></div>
-          <div class="element element-4"></div>
-          <div class="element element-5"></div>
-          <div class="element element-6"></div>
-          <div class="element element-7"></div>
-        </div>
+      <div class="relative z-10 text-center px-4 pt-20 md:pt-0">
+        <h1
+          class="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-4 text-white"
+        >
+          Aye Hnin Wai
+        </h1>
+        <p class="font-display text-2xl md:text-3xl text-accent mb-6">
+          An Architect from Burma
+        </p>
+        <p class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10">
+          Creating innovative architectural designs that blend functionality
+          with aesthetic excellence
+        </p>
+        <a
+          href="#projects"
+          class="inline-block px-8 py-4 bg-accent text-white font-semibold rounded-full hover:bg-amber-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+        >
+          View Projects
+        </a>
       </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-      <div class="container">
-        <div class="about-content">
-          <div class="about-text">
-            <h2 class="section-title">About</h2>
-            <p>
-              I'm Aye Hnin Wai, an architect with a passion for innovative
-              design and sustainable architecture. I create spaces that
-              seamlessly blend functionality with aesthetic excellence. Each
-              project is approached with meticulous attention to detail and a
-              deep understanding of how people interact with their environment.
-            </p>
-            <div class="stats">
-              <div class="stat">
-                <h3>50+</h3>
-                <p>Projects Completed</p>
-              </div>
-              <div class="stat">
-                <h3>8+</h3>
-                <p>Years Experience</p>
-              </div>
-              <div class="stat">
-                <h3>25+</h3>
-                <p>Happy Clients</p>
-              </div>
-            </div>
+    <section id="about" class="py-20 md:py-32 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2
+          class="font-display text-4xl md:text-5xl font-bold text-center mb-6 gradient-text"
+        >
+          About
+        </h2>
+        <p
+          class="text-center text-secondary max-w-3xl mx-auto text-lg leading-relaxed mb-16"
+        >
+          I'm Aye Hnin Wai, an architect with a passion for innovative design
+          and sustainable architecture. I create spaces that seamlessly blend
+          functionality with aesthetic excellence. Each project is approached
+          with meticulous attention to detail and a deep understanding of how
+          people interact with their environment.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="text-center p-8 bg-cream rounded-2xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+          >
+            <h3 class="text-4xl md:text-5xl font-bold text-accent mb-2">50+</h3>
+            <p class="text-secondary font-medium">Projects Completed</p>
+          </div>
+          <div
+            class="text-center p-8 bg-cream rounded-2xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+          >
+            <h3 class="text-4xl md:text-5xl font-bold text-accent mb-2">3+</h3>
+            <p class="text-secondary font-medium">Years Experience</p>
+          </div>
+          <div
+            class="text-center p-8 bg-cream rounded-2xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+          >
+            <h3 class="text-4xl md:text-5xl font-bold text-accent mb-2">30+</h3>
+            <p class="text-secondary font-medium">Happy Clients</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
-      <div class="container">
-        <h2 class="section-title">Featured Projects</h2>
+    <section id="projects" class="py-20 md:py-32 bg-cream">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2
+          class="font-display text-4xl md:text-5xl font-bold text-center mb-4 gradient-text"
+        >
+          Featured Projects
+        </h2>
+        <p class="text-center text-secondary mb-16 max-w-2xl mx-auto">
+          A collection of residential architectural designs showcasing modern
+          aesthetics and functional spaces
+        </p>
 
-        <!-- Myeik Project -->
-        <div class="project-showcase">
-          <div class="project-header">
-            <h3 class="project-title">Myeik Project</h3>
-            <p class="project-description">
-              A modern architectural masterpiece featuring innovative design
-              elements and sustainable construction practices.
-            </p>
-          </div>
-
-          <!-- Render Gallery -->
-          <div class="render-gallery">
-            <h4 class="gallery-title">Architectural Renders</h4>
-            <div class="gallery-grid">
-              <div class="gallery-item main-render">
-                <img
-                  src="Myeik Proj/Render Photo/1.jpg"
-                  alt="Myeik Project Main Render"
-                  loading="lazy"
-                />
-                <div class="overlay">
-                  <span>Main Perspective</span>
-                </div>
+        <!-- Project Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Myeik Resident -->
+          <div
+            class="project-card group cursor-pointer"
+            onclick="openProject('myeik')"
+          >
+            <div class="relative overflow-hidden rounded-2xl aspect-[4/3]">
+              <img
+                src="portfolios/Myeik Resident/Render Photo/1.jpg"
+                alt="Myeik Resident"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+              >
+                <span class="text-accent text-sm font-medium">Residential</span>
+                <h3 class="text-white text-xl font-display font-semibold">
+                  Myeik Resident
+                </h3>
               </div>
-              <div class="gallery-item">
-                <img
-                  src="Myeik Proj/Render Photo/2.jpg"
-                  alt="Myeik Project Render 2"
-                  loading="lazy"
-                />
-                <div class="overlay">
-                  <span>Side View</span>
-                </div>
-              </div>
-              <div class="gallery-item">
-                <img
-                  src="Myeik Proj/Render Photo/3.jpg"
-                  alt="Myeik Project Render 3"
-                  loading="lazy"
-                />
-                <div class="overlay">
-                  <span>Interior View</span>
-                </div>
-              </div>
-              <div class="gallery-item">
-                <img
-                  src="Myeik Proj/Render Photo/4.jpg"
-                  alt="Myeik Project Render 4"
-                  loading="lazy"
-                />
-                <div class="overlay">
-                  <span>Aerial View</span>
-                </div>
-              </div>
-              <div class="gallery-item">
-                <img
-                  src="Myeik Proj/Render Photo/5.jpg"
-                  alt="Myeik Project Render 5"
-                  loading="lazy"
-                />
-                <div class="overlay">
-                  <span>Night View</span>
-                </div>
-              </div>
-              <div class="gallery-item">
-                <img
-                  src="Myeik Proj/Render Photo/6.jpg"
-                  alt="Myeik Project Render 6"
-                  loading="lazy"
-                />
-                <div class="overlay">
-                  <span>Detail View</span>
-                </div>
-              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-display text-xl font-semibold text-primary mb-2">
+                Myeik Resident
+              </h3>
+              <p class="text-secondary text-sm">
+                Modern residential design with contemporary aesthetics
+              </p>
             </div>
           </div>
 
-          <!-- Technical Drawings -->
-          <div class="drawings-section">
-            <h4 class="gallery-title">Technical Drawings</h4>
-            <div class="drawings-grid">
-              <div class="drawing-item">
-                <img
-                  src="Myeik Proj/Detail Dwg/01_G.F-1.png"
-                  alt="Ground Floor Plan"
-                  loading="lazy"
-                />
-                <div class="drawing-label">Ground Floor Plan</div>
+          <!-- Pinlone Resident -->
+          <div
+            class="project-card group cursor-pointer"
+            onclick="openProject('pinlone')"
+          >
+            <div class="relative overflow-hidden rounded-2xl aspect-[4/3]">
+              <img
+                src="portfolios/Pinlone Resident/Render Photos/01.jpg"
+                alt="Pinlone Resident"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+              >
+                <span class="text-accent text-sm font-medium">Residential</span>
+                <h3 class="text-white text-xl font-display font-semibold">
+                  Pinlone Resident
+                </h3>
               </div>
-              <div class="drawing-item">
-                <img
-                  src="Myeik Proj/Detail Dwg/02_1st.F-1.png"
-                  alt="First Floor Plan"
-                  loading="lazy"
-                />
-                <div class="drawing-label">First Floor Plan</div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-display text-xl font-semibold text-primary mb-2">
+                Pinlone Resident
+              </h3>
+              <p class="text-secondary text-sm">
+                Elegant living spaces with functional design
+              </p>
+            </div>
+          </div>
+
+          <!-- USLLF's Resident -->
+          <div
+            class="project-card group cursor-pointer"
+            onclick="openProject('usllf')"
+          >
+            <div class="relative overflow-hidden rounded-2xl aspect-[4/3]">
+              <img
+                src="portfolios/USLLF's Resident/Render Photo/1.jpg"
+                alt="USLLF's Resident"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+              >
+                <span class="text-accent text-sm font-medium">Residential</span>
+                <h3 class="text-white text-xl font-display font-semibold">
+                  USLLF's Resident
+                </h3>
               </div>
-              <div class="drawing-item">
-                <img
-                  src="Myeik Proj/Detail Dwg/03_2nd.F-1.png"
-                  alt="Second Floor Plan"
-                  loading="lazy"
-                />
-                <div class="drawing-label">Second Floor Plan</div>
-              </div>
-              <div class="drawing-item">
-                <img
-                  src="Myeik Proj/Detail Dwg/04_3rd.F-1.png"
-                  alt="Third Floor Plan"
-                  loading="lazy"
-                />
-                <div class="drawing-label">Third Floor Plan</div>
-              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-display text-xl font-semibold text-primary mb-2">
+                USLLF's Resident
+              </h3>
+              <p class="text-secondary text-sm">
+                Innovative architecture with sustainable approach
+              </p>
             </div>
           </div>
         </div>
@@ -216,50 +292,66 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <div class="contact-content">
-          <div class="contact-info">
-            <h2 class="section-title">Let's Work Together</h2>
-            <p>
+    <section id="contact" class="py-20 md:py-32 bg-primary text-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+          <div>
+            <h2
+              class="font-display text-4xl md:text-5xl font-bold mb-6 gradient-text"
+            >
+              Let's Work Together
+            </h2>
+            <p class="text-white/80 text-lg mb-10 leading-relaxed">
               Ready to bring your architectural vision to life? I'd love to
               discuss your project and explore how we can create something
               extraordinary together.
             </p>
-            <div class="contact-details">
-              <div class="contact-item">
-                <h4>Email</h4>
-                <p>ayehninwai.architect@gmail.com</p>
+            <div class="space-y-6">
+              <div>
+                <h4 class="text-accent font-semibold mb-1">Email</h4>
+                <p class="text-white/80">ayehninwai.architect@gmail.com</p>
               </div>
-              <div class="contact-item">
-                <h4>Phone</h4>
-                <p>+95 9 123 456 789</p>
+              <div>
+                <h4 class="text-accent font-semibold mb-1">Phone</h4>
+                <p class="text-white/80">+95 9 123 456 789</p>
               </div>
-              <div class="contact-item">
-                <h4>Location</h4>
-                <p>Yangon, Myanmar</p>
+              <div>
+                <h4 class="text-accent font-semibold mb-1">Location</h4>
+                <p class="text-white/80">Yangon, Myanmar</p>
               </div>
             </div>
           </div>
-          <div class="contact-form">
-            <form>
-              <div class="form-group">
-                <input type="text" placeholder="Your Name" required />
-              </div>
-              <div class="form-group">
-                <input type="email" placeholder="Your Email" required />
-              </div>
-              <div class="form-group">
-                <input type="text" placeholder="Project Type" />
-              </div>
-              <div class="form-group">
-                <textarea
-                  placeholder="Tell me about your project"
-                  rows="5"
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" class="submit-btn">Send Message</button>
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8">
+            <form id="contact-form" class="space-y-5">
+              <input
+                type="text"
+                placeholder="Your Name"
+                required
+                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:border-accent transition"
+              />
+              <input
+                type="email"
+                placeholder="Your Email"
+                required
+                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:border-accent transition"
+              />
+              <input
+                type="text"
+                placeholder="Project Type"
+                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:border-accent transition"
+              />
+              <textarea
+                placeholder="Tell me about your project"
+                rows="4"
+                required
+                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:border-accent transition resize-none"
+              ></textarea>
+              <button
+                type="submit"
+                class="w-full py-4 bg-accent text-white font-semibold rounded-xl hover:bg-amber-600 transition-all duration-300"
+              >
+                Send Message
+              </button>
             </form>
           </div>
         </div>
@@ -267,35 +359,128 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-logo">
-            <h3>AYE HNIN WAI</h3>
+    <footer class="bg-primary border-t border-white/10 py-8">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <p class="font-display text-white text-lg">AYE HNIN WAI</p>
+          <div class="flex gap-6">
+            <a href="#" class="text-white/60 hover:text-accent transition"
+              >LinkedIn</a
+            >
+            <a href="#" class="text-white/60 hover:text-accent transition"
+              >Instagram</a
+            >
+            <a href="#" class="text-white/60 hover:text-accent transition"
+              >Behance</a
+            >
           </div>
-          <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <div class="footer-social">
-            <a href="#">LinkedIn</a>
-            <a href="#">Instagram</a>
-            <a href="#">Behance</a>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2024 Aye Hnin Wai. All rights reserved.</p>
+          <p class="text-white/40 text-sm">
+            &copy; 2024 Aye Hnin Wai. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-      <span class="close">&times;</span>
-      <img class="lightbox-content" id="lightbox-img" />
-      <div class="lightbox-caption"></div>
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden">
+      <div
+        class="absolute inset-0 bg-black/90 backdrop-blur-sm"
+        onclick="closeProject()"
+      ></div>
+      <div class="relative h-full overflow-y-auto">
+        <button
+          onclick="closeProject()"
+          class="fixed top-4 right-4 z-50 p-3 bg-white/10 hover:bg-white/20 rounded-full transition"
+        >
+          <svg
+            class="w-6 h-6 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+        <div id="modal-content" class="max-w-6xl mx-auto px-4 py-20">
+          <!-- Content loaded dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Lightbox -->
+    <div
+      id="lightbox"
+      class="fixed inset-0 z-[60] hidden bg-black/95 items-center justify-center"
+      onclick="closeLightbox()"
+    >
+      <button
+        onclick="event.stopPropagation(); closeLightbox()"
+        class="absolute top-4 right-4 p-3 text-white/80 hover:text-white transition z-10"
+      >
+        <svg
+          class="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <button
+        onclick="event.stopPropagation(); prevImage()"
+        class="absolute left-4 top-1/2 -translate-y-1/2 p-3 text-white/80 hover:text-white transition z-10"
+      >
+        <svg
+          class="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+      </button>
+      <button
+        onclick="event.stopPropagation(); nextImage()"
+        class="absolute right-4 top-1/2 -translate-y-1/2 p-3 text-white/80 hover:text-white transition z-10"
+      >
+        <svg
+          class="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </button>
+      <img
+        id="lightbox-img"
+        class="max-w-[90vw] max-h-[90vh] object-contain"
+        src=""
+        alt=""
+        onclick="event.stopPropagation()"
+      />
     </div>
 
     <script src="script.js"></script>

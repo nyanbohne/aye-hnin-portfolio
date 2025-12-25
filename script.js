@@ -1,83 +1,240 @@
-// Mobile Navigation Toggle
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
+// Project Data
+const projects = {
+  myeik: {
+    title: "Myeik Resident",
+    description:
+      "A modern residential design featuring contemporary aesthetics with functional living spaces. This project showcases innovative architectural solutions that maximize natural light and create seamless indoor-outdoor connections.",
+    renders: [
+      "portfolios/Myeik Resident/Render Photo/1.jpg",
+      "portfolios/Myeik Resident/Render Photo/2.jpg",
+      "portfolios/Myeik Resident/Render Photo/3.jpg",
+      "portfolios/Myeik Resident/Render Photo/4.jpg",
+      "portfolios/Myeik Resident/Render Photo/5.jpg",
+      "portfolios/Myeik Resident/Render Photo/6.jpg",
+    ],
+    drawings: [
+      {
+        src: "portfolios/Myeik Resident/Detail Dwg/01_G.F-1.png",
+        label: "Ground Floor Plan",
+      },
+      {
+        src: "portfolios/Myeik Resident/Detail Dwg/02_1st.F-1.png",
+        label: "First Floor Plan",
+      },
+      {
+        src: "portfolios/Myeik Resident/Detail Dwg/03_2nd.F-1.png",
+        label: "Second Floor Plan",
+      },
+      {
+        src: "portfolios/Myeik Resident/Detail Dwg/04_3rd.F-1.png",
+        label: "Third Floor Plan",
+      },
+    ],
+  },
+  pinlone: {
+    title: "Pinlone Resident",
+    description:
+      "An elegant residential project that combines traditional elements with modern design principles. The architecture emphasizes spacious interiors and harmonious integration with the surrounding environment.",
+    renders: [
+      "portfolios/Pinlone Resident/Render Photos/01.jpg",
+      "portfolios/Pinlone Resident/Render Photos/02.jpg",
+      "portfolios/Pinlone Resident/Render Photos/04.jpg",
+      "portfolios/Pinlone Resident/Render Photos/05.jpg",
+      "portfolios/Pinlone Resident/Render Photos/06.jpg",
+      "portfolios/Pinlone Resident/Render Photos/14.jpg",
+      "portfolios/Pinlone Resident/Render Photos/16.jpg",
+    ],
+    drawings: [],
+  },
+  usllf: {
+    title: "USLLF's Resident",
+    description:
+      "A sustainable residential design that prioritizes eco-friendly materials and energy efficiency. This project demonstrates how modern architecture can be both beautiful and environmentally responsible.",
+    renders: [
+      "portfolios/USLLF's Resident/Render Photo/1.jpg",
+      "portfolios/USLLF's Resident/Render Photo/2.jpg",
+      "portfolios/USLLF's Resident/Render Photo/3.jpg",
+      "portfolios/USLLF's Resident/Render Photo/4.jpg",
+      "portfolios/USLLF's Resident/Render Photo/5.jpg",
+      "portfolios/USLLF's Resident/Render Photo/6.jpg",
+    ],
+    drawings: [],
+  },
+};
 
-hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("active");
-  navMenu.classList.toggle("active");
+let currentImages = [];
+let currentImageIndex = 0;
+
+// Mobile Menu Toggle
+const menuBtn = document.getElementById("menu-btn");
+const mobileMenu = document.getElementById("mobile-menu");
+
+menuBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("hidden");
+  mobileMenu.classList.toggle("active");
 });
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll(".nav-menu a").forEach((link) => {
+// Close mobile menu on link click
+document.querySelectorAll("#mobile-menu a").forEach((link) => {
   link.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    navMenu.classList.remove("active");
+    mobileMenu.classList.add("hidden");
+    mobileMenu.classList.remove("active");
   });
 });
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  });
-});
-
-// Navbar background change on scroll
+// Navbar scroll effect
 window.addEventListener("scroll", () => {
-  const navbar = document.querySelector(".navbar");
+  const navbar = document.getElementById("navbar");
+  const glassNav = navbar.querySelector(".glass-nav");
   if (window.scrollY > 100) {
-    navbar.style.background = "rgba(255, 255, 255, 0.98)";
-    navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+    glassNav.classList.add("glass-nav-scrolled");
   } else {
-    navbar.style.background = "rgba(255, 255, 255, 0.95)";
-    navbar.style.boxShadow = "none";
+    glassNav.classList.remove("glass-nav-scrolled");
   }
 });
 
-// Lightbox functionality
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const lightboxCaption = document.querySelector(".lightbox-caption");
-const closeBtn = document.querySelector(".close");
+// Open Project Modal
+function openProject(projectId) {
+  const project = projects[projectId];
+  if (!project) return;
 
-// Add click event to all gallery and drawing images
-document
-  .querySelectorAll(".gallery-item img, .drawing-item img")
-  .forEach((img) => {
-    img.addEventListener("click", function () {
-      lightbox.style.display = "block";
-      lightboxImg.src = this.src;
-      lightboxCaption.textContent = this.alt;
-      document.body.style.overflow = "hidden"; // Prevent background scrolling
-    });
-  });
+  const modal = document.getElementById("project-modal");
+  const content = document.getElementById("modal-content");
 
-// Close lightbox
-closeBtn.addEventListener("click", closeLightbox);
-lightbox.addEventListener("click", function (e) {
-  if (e.target === lightbox) {
-    closeLightbox();
+  currentImages = [...project.renders, ...project.drawings.map((d) => d.src)];
+
+  let drawingsHTML = "";
+  if (project.drawings.length > 0) {
+    drawingsHTML = `
+            <div class="mt-16">
+                <h3 class="text-2xl font-display font-semibold text-white mb-6">Technical Drawings</h3>
+                <div class="drawings-grid">
+                    ${project.drawings
+                      .map(
+                        (drawing, index) => `
+                        <div class="drawing-item" onclick="openLightbox(${
+                          project.renders.length + index
+                        })">
+                            <img src="${drawing.src}" alt="${
+                          drawing.label
+                        }" loading="lazy">
+                            <p>${drawing.label}</p>
+                        </div>
+                    `
+                      )
+                      .join("")}
+                </div>
+            </div>
+        `;
   }
-});
 
-// Close lightbox with Escape key
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape") {
-    closeLightbox();
-  }
-});
+  content.innerHTML = `
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">${
+              project.title
+            }</h2>
+            <p class="text-white/70 max-w-2xl mx-auto">${
+              project.description
+            }</p>
+        </div>
+        
+        <div>
+            <h3 class="text-2xl font-display font-semibold text-white mb-6">Architectural Renders</h3>
+            <div class="gallery-grid">
+                ${project.renders
+                  .map(
+                    (img, index) => `
+                    <div class="gallery-item" onclick="openLightbox(${index})">
+                        <img src="${img}" alt="${project.title} Render ${
+                      index + 1
+                    }" loading="lazy">
+                    </div>
+                `
+                  )
+                  .join("")}
+            </div>
+        </div>
+        
+        ${drawingsHTML}
+    `;
+
+  modal.classList.remove("hidden");
+  setTimeout(() => modal.classList.add("active"), 10);
+  document.body.style.overflow = "hidden";
+}
+
+// Close Project Modal
+function closeProject() {
+  const modal = document.getElementById("project-modal");
+  modal.classList.remove("active");
+  setTimeout(() => {
+    modal.classList.add("hidden");
+    document.body.style.overflow = "";
+  }, 300);
+}
+
+// Lightbox Functions
+function openLightbox(index) {
+  currentImageIndex = index;
+  const lightbox = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
+
+  img.src = currentImages[currentImageIndex];
+  lightbox.classList.remove("hidden");
+  lightbox.classList.add("active");
+}
 
 function closeLightbox() {
-  lightbox.style.display = "none";
-  document.body.style.overflow = "auto"; // Restore scrolling
+  const lightbox = document.getElementById("lightbox");
+  lightbox.classList.remove("active");
+  lightbox.classList.add("hidden");
 }
+
+function nextImage() {
+  currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+  document.getElementById("lightbox-img").src =
+    currentImages[currentImageIndex];
+}
+
+function prevImage() {
+  currentImageIndex =
+    (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+  document.getElementById("lightbox-img").src =
+    currentImages[currentImageIndex];
+}
+
+// Keyboard Navigation
+document.addEventListener("keydown", (e) => {
+  const lightbox = document.getElementById("lightbox");
+  const modal = document.getElementById("project-modal");
+
+  if (lightbox.classList.contains("active")) {
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
+  } else if (modal.classList.contains("active")) {
+    if (e.key === "Escape") closeProject();
+  }
+});
+
+// Contact Form
+document
+  .getElementById("contact-form")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const btn = this.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = "Sending...";
+    btn.disabled = true;
+
+    setTimeout(() => {
+      alert("Thank you for your message! I will get back to you soon.");
+      this.reset();
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }, 1500);
+  });
 
 // Intersection Observer for animations
 const observerOptions = {
@@ -94,202 +251,23 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Observe elements for animation
-document
-  .querySelectorAll(".gallery-item, .drawing-item, .stat, .contact-item")
-  .forEach((el) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(30px)";
-    el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-    observer.observe(el);
-  });
-
-// Form submission
-const contactForm = document.querySelector(".contact-form form");
-contactForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  // Get form data
-  const formData = new FormData(this);
-  const name = this.querySelector('input[type="text"]').value;
-  const email = this.querySelector('input[type="email"]').value;
-  const projectType = this.querySelector(
-    'input[type="text"]:nth-of-type(2)'
-  ).value;
-  const message = this.querySelector("textarea").value;
-
-  // Simple validation
-  if (!name || !email || !message) {
-    alert("Please fill in all required fields.");
-    return;
-  }
-
-  // Simulate form submission
-  const submitBtn = this.querySelector(".submit-btn");
-  const originalText = submitBtn.textContent;
-  submitBtn.textContent = "Sending...";
-  submitBtn.disabled = true;
-
-  setTimeout(() => {
-    alert("Thank you for your message! I will get back to you soon.");
-    this.reset();
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
-  }, 2000);
+// Observe project cards and stats
+document.querySelectorAll(".project-card, .text-center.p-8").forEach((el) => {
+  el.style.opacity = "0";
+  el.style.transform = "translateY(30px)";
+  el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+  observer.observe(el);
 });
 
-// Parallax effect for hero section
-window.addEventListener("scroll", () => {
-  const scrolled = window.pageYOffset;
-  const parallaxElements = document.querySelectorAll(
-    ".floating-elements .element"
-  );
-
-  parallaxElements.forEach((element, index) => {
-    const speed = 0.5 + index * 0.1;
-    element.style.transform = `translateY(${scrolled * speed}px) rotate(${
-      scrolled * 0.1
-    }deg)`;
-  });
-});
-
-// Counter animation for stats
-function animateCounters() {
-  const counters = document.querySelectorAll(".stat h3");
-
-  counters.forEach((counter) => {
-    const target = parseInt(counter.textContent);
-    const increment = target / 100;
-    let current = 0;
-
-    const updateCounter = () => {
-      if (current < target) {
-        current += increment;
-        counter.textContent = Math.ceil(current) + "+";
-        requestAnimationFrame(updateCounter);
-      } else {
-        counter.textContent = target + "+";
-      }
-    };
-
-    updateCounter();
-  });
-}
-
-// Trigger counter animation when stats section is visible
-const statsSection = document.querySelector(".stats");
-if (statsSection) {
-  const statsObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCounters();
-          statsObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  statsObserver.observe(statsSection);
-}
-
-// Image lazy loading fallback
-document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
-  if ("loading" in HTMLImageElement.prototype) {
-    // Browser supports native lazy loading
-    return;
-  }
-
-  // Fallback for browsers that don't support lazy loading
-  const imageObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src || img.src;
-        img.classList.remove("lazy");
-        imageObserver.unobserve(img);
-      }
-    });
-  });
-
-  imageObserver.observe(img);
-});
-
-// Add loading states for images
+// Image lazy loading with fade effect
 document.querySelectorAll("img").forEach((img) => {
-  // Check if image is already cached/loaded
-  if (img.complete && img.naturalHeight !== 0) {
-    img.classList.add("loaded");
-  }
-
-  img.addEventListener("load", function () {
-    this.classList.add("loaded");
-  });
-
-  img.addEventListener("error", function () {
-    this.style.opacity = "0.5";
-    this.alt = "Image failed to load";
-  });
-});
-
-// Keyboard navigation for lightbox
-document.addEventListener("keydown", function (e) {
-  if (lightbox.style.display === "block") {
-    const images = Array.from(
-      document.querySelectorAll(".gallery-item img, .drawing-item img")
-    );
-    const currentIndex = images.findIndex((img) => img.src === lightboxImg.src);
-
-    if (e.key === "ArrowLeft" && currentIndex > 0) {
-      const prevImg = images[currentIndex - 1];
-      lightboxImg.src = prevImg.src;
-      lightboxCaption.textContent = prevImg.alt;
-    } else if (e.key === "ArrowRight" && currentIndex < images.length - 1) {
-      const nextImg = images[currentIndex + 1];
-      lightboxImg.src = nextImg.src;
-      lightboxCaption.textContent = nextImg.alt;
-    }
-  }
-});
-
-// Performance optimization: Debounce scroll events
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
-
-// Apply debouncing to scroll events
-const debouncedScrollHandler = debounce(() => {
-  // Navbar background change
-  const navbar = document.querySelector(".navbar");
-  if (window.scrollY > 100) {
-    navbar.style.background = "rgba(255, 255, 255, 0.98)";
-    navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+  if (img.complete) {
+    img.classList.add("img-loaded");
   } else {
-    navbar.style.background = "rgba(255, 255, 255, 0.95)";
-    navbar.style.boxShadow = "none";
+    img.classList.add("img-loading");
+    img.addEventListener("load", function () {
+      this.classList.remove("img-loading");
+      this.classList.add("img-loaded");
+    });
   }
-
-  // Parallax effect
-  const scrolled = window.pageYOffset;
-  const parallaxElements = document.querySelectorAll(
-    ".floating-elements .element"
-  );
-
-  parallaxElements.forEach((element, index) => {
-    const speed = 0.5 + index * 0.1;
-    element.style.transform = `translateY(${scrolled * speed}px) rotate(${
-      scrolled * 0.1
-    }deg)`;
-  });
-}, 10);
-
-window.addEventListener("scroll", debouncedScrollHandler);
+});
