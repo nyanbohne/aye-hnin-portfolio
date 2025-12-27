@@ -1,64 +1,199 @@
 // Project Data
 const projects = {
   myeik: {
-    title: "Myeik Resident",
+    title: "Myeik Residence",
+    firm: "Light+Square",
+    firmUrl: "https://lightplussquare.com/",
+    location: "Myeik, Tanintharyi Region",
+    status: "Completed",
+    sqft: "3,500 sq ft",
     description:
       "A modern residential design featuring contemporary aesthetics with functional living spaces. This project showcases innovative architectural solutions that maximize natural light and create seamless indoor-outdoor connections.",
     renders: [
-      "portfolios/Myeik Resident/Render Photo/1.jpg",
-      "portfolios/Myeik Resident/Render Photo/2.jpg",
-      "portfolios/Myeik Resident/Render Photo/3.jpg",
-      "portfolios/Myeik Resident/Render Photo/4.jpg",
-      "portfolios/Myeik Resident/Render Photo/5.jpg",
-      "portfolios/Myeik Resident/Render Photo/6.jpg",
+      "portfolios/Myeik Residence/Render Photo/1.jpg",
+      "portfolios/Myeik Residence/Render Photo/2.jpg",
+      "portfolios/Myeik Residence/Render Photo/3.jpg",
+      "portfolios/Myeik Residence/Render Photo/4.jpg",
+      "portfolios/Myeik Residence/Render Photo/5.jpg",
+      "portfolios/Myeik Residence/Render Photo/6.jpg",
     ],
     drawings: [
       {
-        src: "portfolios/Myeik Resident/Detail Dwg/01_G.F-1.png",
+        src: "portfolios/Myeik Residence/Detail Dwg/01_G.F-1.png",
         label: "Ground Floor Plan",
       },
       {
-        src: "portfolios/Myeik Resident/Detail Dwg/02_1st.F-1.png",
+        src: "portfolios/Myeik Residence/Detail Dwg/02_1st.F-1.png",
         label: "First Floor Plan",
       },
       {
-        src: "portfolios/Myeik Resident/Detail Dwg/03_2nd.F-1.png",
+        src: "portfolios/Myeik Residence/Detail Dwg/03_2nd.F-1.png",
         label: "Second Floor Plan",
       },
       {
-        src: "portfolios/Myeik Resident/Detail Dwg/04_3rd.F-1.png",
+        src: "portfolios/Myeik Residence/Detail Dwg/04_3rd.F-1.png",
         label: "Third Floor Plan",
       },
     ],
   },
   pinlone: {
-    title: "Pinlone Resident",
+    title: "Pinlone Residence",
+    firm: "Light+Square",
+    firmUrl: "https://lightplussquare.com/",
+    location: "Yangon, Myanmar",
+    status: "Under Construction",
+    sqft: "4,200 sq ft",
     description:
       "An elegant residential project that combines traditional elements with modern design principles. The architecture emphasizes spacious interiors and harmonious integration with the surrounding environment.",
     renders: [
-      "portfolios/Pinlone Resident/Render Photos/01.jpg",
-      "portfolios/Pinlone Resident/Render Photos/02.jpg",
-      "portfolios/Pinlone Resident/Render Photos/04.jpg",
-      "portfolios/Pinlone Resident/Render Photos/05.jpg",
-      "portfolios/Pinlone Resident/Render Photos/06.jpg",
-      "portfolios/Pinlone Resident/Render Photos/14.jpg",
-      "portfolios/Pinlone Resident/Render Photos/16.jpg",
+      "portfolios/Pinlone Residence/Render Photo/01.jpg",
+      "portfolios/Pinlone Residence/Render Photo/02.jpg",
+      "portfolios/Pinlone Residence/Render Photo/04.jpg",
+      "portfolios/Pinlone Residence/Render Photo/05.jpg",
+      "portfolios/Pinlone Residence/Render Photo/06.jpg",
+      "portfolios/Pinlone Residence/Render Photo/14.jpg",
+      "portfolios/Pinlone Residence/Render Photo/16.jpg",
+      "portfolios/Pinlone Residence/Render Photo/17.jpg",
+      "portfolios/Pinlone Residence/Render Photo/18.jpg",
     ],
-    drawings: [],
+    drawings: [
+      {
+        src: "portfolios/Pinlone Residence/Detail Dwg/01_G.Fl-1.png",
+        label: "Ground Floor Plan",
+      },
+      {
+        src: "portfolios/Pinlone Residence/Detail Dwg/02_1st.Fl-1.png",
+        label: "First Floor Plan",
+      },
+      {
+        src: "portfolios/Pinlone Residence/Detail Dwg/03_2nd.Fl-1.png",
+        label: "Second Floor Plan",
+      },
+      {
+        src: "portfolios/Pinlone Residence/Detail Dwg/04_3rd.Fl-1.png",
+        label: "Third Floor Plan",
+      },
+      {
+        src: "portfolios/Pinlone Residence/Detail Dwg/05_Roof Plan-1.png",
+        label: "Roof Plan",
+      },
+      {
+        src: "portfolios/Pinlone Residence/Detail Dwg/06_Section A_A-1.png",
+        label: "Section A-A",
+      },
+      {
+        src: "portfolios/Pinlone Residence/Detail Dwg/07_Section-1.png",
+        label: "Section",
+      },
+      {
+        src: "portfolios/Pinlone Residence/Detail Dwg/08_Stair 01-1.png",
+        label: "Stair Detail",
+      },
+    ],
+  },
+  ummh: {
+    title: "UMMH's Residence",
+    firm: "Light+Square",
+    firmUrl: "https://lightplussquare.com/",
+    location: "Mandalay, Myanmar",
+    status: "Completed",
+    sqft: "5,000 sq ft",
+    description:
+      "A thoughtfully designed residence that balances modern aesthetics with practical living requirements. This project features multiple proposal variations to meet diverse client preferences.",
+    renders: [
+      "portfolios/UMMH's Residence/Render Photo/Proposal 1.1.jpg",
+      "portfolios/UMMH's Residence/Render Photo/Proposal 1.2.jpg",
+      "portfolios/UMMH's Residence/Render Photo/Proposal 1.3.jpg",
+      "portfolios/UMMH's Residence/Render Photo/Proposal 1.4.jpg",
+      "portfolios/UMMH's Residence/Render Photo/Proposal 1.5.jpg",
+      "portfolios/UMMH's Residence/Render Photo/Proposal 1.6.jpg",
+      "portfolios/UMMH's Residence/Render Photo/Proposal 1.7.jpg",
+      "portfolios/UMMH's Residence/Render Photo/Proposal 1.8.jpg",
+      "portfolios/UMMH's Residence/Render Photo/Proposal 1.9.jpg",
+      "portfolios/UMMH's Residence/Render Photo/Proposal 1.10.jpg",
+    ],
+    drawings: [
+      {
+        src: "portfolios/UMMH's Residence/Detail Dwg/01-1.png",
+        label: "Floor Plan 1",
+      },
+      {
+        src: "portfolios/UMMH's Residence/Detail Dwg/02-1.png",
+        label: "Floor Plan 2",
+      },
+      {
+        src: "portfolios/UMMH's Residence/Detail Dwg/03-1.png",
+        label: "Floor Plan 3",
+      },
+      {
+        src: "portfolios/UMMH's Residence/Detail Dwg/04-1.png",
+        label: "Floor Plan 4",
+      },
+      {
+        src: "portfolios/UMMH's Residence/Detail Dwg/05-1.png",
+        label: "Floor Plan 5",
+      },
+      {
+        src: "portfolios/UMMH's Residence/Detail Dwg/06-1.png",
+        label: "Floor Plan 6",
+      },
+      {
+        src: "portfolios/UMMH's Residence/Detail Dwg/07-1.png",
+        label: "Floor Plan 7",
+      },
+      {
+        src: "portfolios/UMMH's Residence/Detail Dwg/08-1.png",
+        label: "Floor Plan 8",
+      },
+    ],
   },
   usllf: {
-    title: "USLLF's Resident",
+    title: "USLLF's Residence",
+    firm: "Light+Square",
+    firmUrl: "https://lightplussquare.com/",
+    location: "Yangon, Myanmar",
+    status: "Under Construction",
+    sqft: "4,800 sq ft",
     description:
       "A sustainable residential design that prioritizes eco-friendly materials and energy efficiency. This project demonstrates how modern architecture can be both beautiful and environmentally responsible.",
     renders: [
-      "portfolios/USLLF's Resident/Render Photo/1.jpg",
-      "portfolios/USLLF's Resident/Render Photo/2.jpg",
-      "portfolios/USLLF's Resident/Render Photo/3.jpg",
-      "portfolios/USLLF's Resident/Render Photo/4.jpg",
-      "portfolios/USLLF's Resident/Render Photo/5.jpg",
-      "portfolios/USLLF's Resident/Render Photo/6.jpg",
+      "portfolios/USLLF's Residence/Render Photo/1.jpg",
+      "portfolios/USLLF's Residence/Render Photo/2.jpg",
+      "portfolios/USLLF's Residence/Render Photo/3.jpg",
+      "portfolios/USLLF's Residence/Render Photo/4.jpg",
+      "portfolios/USLLF's Residence/Render Photo/5.jpg",
+      "portfolios/USLLF's Residence/Render Photo/6.jpg",
     ],
-    drawings: [],
+    drawings: [
+      {
+        src: "portfolios/USLLF's Residence/Detail Dwg/USLLF_s Residence-2.jpg",
+        label: "Floor Plan 1",
+      },
+      {
+        src: "portfolios/USLLF's Residence/Detail Dwg/USLLF_s Residence-3.jpg",
+        label: "Floor Plan 2",
+      },
+      {
+        src: "portfolios/USLLF's Residence/Detail Dwg/USLLF_s Residence-4.jpg",
+        label: "Floor Plan 3",
+      },
+      {
+        src: "portfolios/USLLF's Residence/Detail Dwg/USLLF_s Residence-5.jpg",
+        label: "Floor Plan 4",
+      },
+      {
+        src: "portfolios/USLLF's Residence/Detail Dwg/USLLF_s Residence-6.jpg",
+        label: "Floor Plan 5",
+      },
+      {
+        src: "portfolios/USLLF's Residence/Detail Dwg/USLLF_s Residence-11.jpg",
+        label: "Section 1",
+      },
+      {
+        src: "portfolios/USLLF's Residence/Detail Dwg/USLLF_s Residence-12.jpg",
+        label: "Section 2",
+      },
+    ],
   },
 };
 
@@ -82,16 +217,43 @@ document.querySelectorAll("#mobile-menu a").forEach((link) => {
   });
 });
 
-// Navbar scroll effect
+// Navbar scroll effect and auto-hide
+let navbarTimeout;
+const navbar = document.getElementById("navbar");
+
+function showNavbar() {
+  navbar.classList.remove("nav-hidden");
+}
+
+function hideNavbar() {
+  // Only hide if scrolled past hero section
+  if (window.scrollY > window.innerHeight) {
+    navbar.classList.add("nav-hidden");
+  }
+}
+
+function resetNavbarTimer() {
+  showNavbar();
+  clearTimeout(navbarTimeout);
+  navbarTimeout = setTimeout(hideNavbar, 1500);
+}
+
 window.addEventListener("scroll", () => {
-  const navbar = document.getElementById("navbar");
   const glassNav = navbar.querySelector(".glass-nav");
   if (window.scrollY > 100) {
     glassNav.classList.add("glass-nav-scrolled");
   } else {
     glassNav.classList.remove("glass-nav-scrolled");
   }
+  resetNavbarTimer();
 });
+
+window.addEventListener("mousemove", () => {
+  resetNavbarTimer();
+});
+
+// Start the timer on page load
+resetNavbarTimer();
 
 // Open Project Modal
 function openProject(projectId) {
@@ -133,9 +295,38 @@ function openProject(projectId) {
             <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">${
               project.title
             }</h2>
-            <p class="text-white/70 max-w-2xl mx-auto">${
+            <a href="${
+              project.firmUrl
+            }" target="_blank" class="inline-flex items-center justify-center gap-2 mb-4 opacity-80 hover:opacity-100 transition">
+                <span class="text-sm text-white/70">Designed @</span>
+                <img src="images/lightplussquare-logo.png" alt="${
+                  project.firm
+                }" class="h-6">
+            </a>
+            <p class="text-white/70 max-w-2xl mx-auto mb-6">${
               project.description
             }</p>
+            <div class="flex flex-wrap justify-center gap-6 text-sm">
+                <div class="flex items-center gap-2 text-white/80">
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    <span>${project.location}</span>
+                </div>
+                <div class="flex items-center gap-2 text-white/80">
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>${project.status}</span>
+                </div>
+                <div class="flex items-center gap-2 text-white/80">
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+                    </svg>
+                    <span>${project.sqft}</span>
+                </div>
+            </div>
         </div>
         
         <div>
@@ -159,7 +350,7 @@ function openProject(projectId) {
     `;
 
   modal.classList.remove("hidden");
-  setTimeout(() => modal.classList.add("active"), 10);
+  modal.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
@@ -167,10 +358,8 @@ function openProject(projectId) {
 function closeProject() {
   const modal = document.getElementById("project-modal");
   modal.classList.remove("active");
-  setTimeout(() => {
-    modal.classList.add("hidden");
-    document.body.style.overflow = "";
-  }, 300);
+  modal.classList.add("hidden");
+  document.body.style.overflow = "";
 }
 
 // Lightbox Functions

@@ -117,18 +117,11 @@
 
 /* Modal Styles */
 #project-modal {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  display: none;
 }
 
 #project-modal.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-#project-modal:not(.active) {
-  display: none;
+  display: block;
 }
 
 /* Lightbox */
@@ -248,13 +241,6 @@ html {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
-  background: linear-gradient(
-    135deg,
-    rgba(26, 26, 46, 0.9) 0%,
-    rgba(26, 26, 46, 0.8) 100%
-  );
-  backdrop-filter: blur(1.25rem);
-  -webkit-backdrop-filter: blur(1.25rem);
 }
 
 #mobile-menu.active {
@@ -287,4 +273,14 @@ html {
   :root {
     font-size: 38px;
   }
+}
+
+/* Navbar auto-hide */
+#navbar {
+  transition: opacity 0.3s ease;
+}
+
+#navbar.nav-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
